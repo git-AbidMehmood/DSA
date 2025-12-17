@@ -1,0 +1,14 @@
+def isValid(s):
+    stack = []
+    match = {')': '(', '}': '{', ']': '['}
+
+    for char in s:
+        if char in "({[":
+            stack.append(char)
+        else:
+            if not stack or stack[-1] != match[char]:
+                return False
+            stack.pop()
+
+    return len(stack) == 0
+print(isValid(s='{}[][]'))
